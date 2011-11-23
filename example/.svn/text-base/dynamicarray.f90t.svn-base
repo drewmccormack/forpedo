@@ -1,0 +1,72 @@
+!
+!  Here are some genetic type instantiations.
+!  First letter is the name of the generic type.
+!  Second is a tag that can be used to avoid naming conflicts.
+!  Third is the concrete fortran type
+!
+!  Note that the last example is effectively a typedef from C. There is no
+!  distinction between a typedef, and a generic type here. A typedef is 
+!  simply a generic type with one instance.
+!
+#definetype T R  real
+#definetype T I  integer
+#definetype T IA type(IntArray)
+#definetype PrivRealParam   none   real, parameter, private
+
+module DynamicArray<T>Module
+    use IntArrayModule
+
+    integer, parameter            :: DefaultInitialSize<T> = 100
+    @PrivRealParam                :: ResizeFactor = 2.0   ! Private data need not be tagged
+
+    type DynamicArray<T>
+        @T, pointer :: data(:)
+        integer     :: length
+    end type
+
+    interface new
+        module procedure newDynamicArray<T>
+    end interface
+
+    interface delete
+        module procedure deleteDynamicArray<T>
+    end interface
+
+    interface append
+        module procedure appendDynamicArray<T>
+    end interface
+
+contains
+ 
+    subroutine newDynamicArray<T>( self )
+        implicit none
+        type (DynamicArray<T>) :: self
+        allocate( self%data(DefaultInitialSize<T>) )
+        self%length = 0
+    end subroutine
+
+    subroutine deleteDynamicArray<T>( self )
+        implicit none
+        type (DynamicArray<T>) :: self
+        deallocate( self%data )
+    end subroutine
+
+    subroutine appendDynamicArray<T>( self, val )
+        implicit none
+        type (DynamicArray<T>) :: self
+        @T, intent(in)         :: val
+        @T, pointer            :: newData(:)
+        integer :: oldSize, newSize
+        if ( size(self%data) == self%length ) then  ! Reallocate space, copying old data
+            oldSize = size(self%data)
+            newSize = ResizeFactor * oldSize
+            allocate( newData(newSize) )
+            newData(:self%length) = self%data(:self%length)
+            deallocate( self%data )
+            self%data => newData
+        endif
+        self%length = self%length + 1
+        self%data(self%length) = val
+    end subroutine
+
+end module

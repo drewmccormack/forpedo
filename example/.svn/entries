@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="4"
+   name=""
+   committed-date="2005-07-05T08:01:09.824544Z"
+   url="svn+ssh://cormack@tb.chem.vu.nl/Users/cormack/subversion/forpedo/trunk/example"
+   last-author="cormack"
+   kind="dir"
+   uuid="bba3de5c-22fb-0310-aa2f-d78cf3c98230"
+   revision="102"/>
+<entry
+   committed-rev="4"
+   name="main.f90"
+   text-time="2005-12-01T18:21:02.000000Z"
+   committed-date="2005-07-05T08:01:09.824544Z"
+   checksum="7f7e29100483ae1dd80d32e5670e53f2"
+   last-author="cormack"
+   kind="file"
+   prop-time="2005-12-01T18:21:02.000000Z"/>
+<entry
+   committed-rev="4"
+   name="compile.sh"
+   text-time="2005-12-01T18:21:02.000000Z"
+   committed-date="2005-07-05T08:01:09.824544Z"
+   checksum="a511ec0c36090c027657bcea8db48beb"
+   last-author="cormack"
+   kind="file"
+   prop-time="2005-12-01T18:21:02.000000Z"/>
+<entry
+   committed-rev="4"
+   name="dynamicarray.f90t"
+   text-time="2005-12-01T18:21:02.000000Z"
+   committed-date="2005-07-05T08:01:09.824544Z"
+   checksum="215d16b2c6548cfbfb26bf5cdf33ace3"
+   last-author="cormack"
+   kind="file"
+   prop-time="2005-12-01T18:21:02.000000Z"/>
+<entry
+   committed-rev="4"
+   name="intarray.f90"
+   text-time="2005-12-01T18:21:02.000000Z"
+   committed-date="2005-07-05T08:01:09.824544Z"
+   checksum="3e7c8d33a7c684cc2dab2b9954c67f87"
+   last-author="cormack"
+   kind="file"
+   prop-time="2005-12-01T18:21:02.000000Z"/>
+</wc-entries>
